@@ -33,10 +33,7 @@ Publish the website in the given URL.
 
 ## PROGRAM :
 ```
-
-
 power.html
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -106,19 +103,16 @@ power.html
         <form method="post">
             {% csrf_token %}
             <label for="current">Current (I) in Amps:</label>
-            <input type="number" step="any" id="current" name="current" value="{{ current }}" required placeholder="Enter current in amps">
-            
+            <input type="number" step="any" id="current" name="current" value="{{ current }}" required placeholder="Enter current in amps">  
             <label for="resistance">Resistance (R) in Ohms:</label>
             <input type="number" step="any" id="resistance" name="resistance" value="{{ resistance }}" required placeholder="Enter resistance in ohms">
 
             <button type="submit">Calculate Power</button>
         </form>
-
         <!-- Display the calculated power or error message -->
         <div class="result">
             <h2>Calculated Power: {{ power }} Watts</h2>
         </div>
-
         {% if power == "Invalid input" %}
             <p class="error">Please provide valid numeric values for both current and resistance.</p>
         {% endif %}
@@ -127,7 +121,6 @@ power.html
 </html>
 
 views.py
-
 
 from django.shortcuts import render
 
@@ -152,20 +145,14 @@ def calculate_power(request):
 
 urls.py
 
-
 from django.contrib import admin
 from django.urls import path
 from mathapp import views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('powercalc/', views.calculate_power, name="powercalc"),
     path('', views.calculate_power, name="powercalcroot"),  # This will map the root URL to the same view
 ]
-
-
-
-
 ```
 
 ## SERVER SIDE PROCESSING:
